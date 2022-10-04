@@ -1,0 +1,37 @@
+name: dswx_val
+channels:
+ - conda-forge
+ - anaconda
+ - defaults
+dependencies:
+ - python>=3.10
+ - jupyter
+ - papermill
+ - ipykernel
+ - rasterio
+ - shapely
+ - dateparser
+ - requests
+ - numpy
+ - matplotlib
+ - fiona
+ - gdal>=3.0
+ - geopandas
+ - boto3
+ - tqdm
+ - pip
+ - planet
+ - contextily
+ - scikit-image
+ - scikit-learn
+ - elasticsearch
+ - elasticsearch-dsl
+ - click
+ - flake8
+ - flake8-blind-except
+ - flake8-builtins
+ - flake8-import-order
+ - pystac-client
+ - pip:
+   - python-dotenv
+   - dem-stitcher>=2.3.0
