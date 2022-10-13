@@ -31,9 +31,18 @@ From this repo:
 
 ## To run notebook with kernel
 
-After activatating
+After activatating your environment (i.e. `conda activate dswx_val`), then
 
 `python -m ipykernel install --user --name dswx_val`
+
+
+## Running the Script
+
+For some reason, using an environment that is the same as the kernel caused issues. This is an issue that should be resolved. For the time being, make sure a different environment has `papermill`, `tqdm`, and `geopandas`.
+
+```
+python verify_all.py
+```
 
 
 ## Contributing
@@ -42,8 +51,8 @@ After activatating
 2. Do you development.
 3. Make sure to run before you commit:
 
-   ```jupyter nbconvert --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --inplace *.ipynb```
+   ```nb-clean clean --preserve-cell-metadata 0-Verify_Requirements.ipynb```
 
-    This will clear ouput and metadata (including when you executed your notebook) for easier version control.
+    This will clear ouput and transient cell metadata (including when you executed your notebook) for easier version control. It will preserve cell tags (for papermill and the kernel information)
 
 4. Have another member review.

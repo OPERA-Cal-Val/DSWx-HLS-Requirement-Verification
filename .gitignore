@@ -11,8 +11,11 @@
 # Vim files
 *.sw[mnop]
 
-# Notebooks used for presentations
-notebooks_plots/
+# Papermill Notebooks
+out_notebooks/
+
+# Output verification data
+verification_assessment_data/
 
 # Data Files
 *.zip
@@ -47,3 +50,8 @@ __pycache__/
 # Environments
 .env
 .envrc
+
+# Data files
+*.xml
+*.tif
+*.csv

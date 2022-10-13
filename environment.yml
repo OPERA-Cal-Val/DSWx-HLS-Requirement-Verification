@@ -12,6 +12,7 @@ dependencies:
  - shapely
  - dateparser
  - requests
+ - nb-clean
  - numpy
  - matplotlib
  - fiona
