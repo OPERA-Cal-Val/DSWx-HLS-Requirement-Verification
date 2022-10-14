@@ -55,3 +55,6 @@ __pycache__/
 *.xml
 *.tif
 *.csv
+
+# Experimental ipynb
+exp_*.ipynb
