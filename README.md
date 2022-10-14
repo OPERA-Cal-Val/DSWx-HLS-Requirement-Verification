@@ -51,7 +51,7 @@ python verify_all.py
 2. Do you development.
 3. Make sure to run before you commit:
 
-   ```nb-clean clean --preserve-cell-metadata 0-Verify_Requirements.ipynb```
+   ```jupyter nbconvert --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --ClearMetadataPreprocessor.preserve_cell_metadata_mask='[("tags")]' --ClearMetadataPreprocessor.preserve_nb_metadata_mask='{"language_info", "name", "kernelspec"}' --inplace *.ipynb```
 
     This will clear ouput and transient cell metadata (including when you executed your notebook) for easier version control. It will preserve cell tags (for papermill and the kernel information)
 
