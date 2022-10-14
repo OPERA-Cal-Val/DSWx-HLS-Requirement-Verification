@@ -42,7 +42,7 @@ def get_val_s3_path(planet_id: str, exclusion_patterns: list = None) -> str:
         raise ValueError(f'Specify exclusion patterns to narrow down {len(keys)} s3 keys: {", ".join(keys)}')
 
     key = keys[0]
-    s3_path = f's3://{bucket}/{key}'
+    s3_path = f'https://{bucket}.s3.us-west-2.amazonaws.com/{key}'
     return s3_path
 
 
