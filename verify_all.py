@@ -44,6 +44,10 @@ def main():
                             parameters={'PLANET_ID': planet_id}
                             )
 
+    pm.execute_notebook('1-Read_Verification.ipynb',
+                        output_path=ipynb_dir / '1-Read_Verification.ipynb'
+                        )
+
 
 if __name__ == '__main__':
     main()
