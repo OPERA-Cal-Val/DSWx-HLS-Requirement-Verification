@@ -36,7 +36,7 @@ After activatating your environment (i.e. `conda activate dswx_val`), then
 `python -m ipykernel install --user --name dswx_val`
 
 
-## Running the Script
+## Checking All Validation Datasets with `verify_all.py`
 
 For some reason, using an environment that is the same as the kernel caused issues. This is an issue that should be resolved. For the time being, make sure a different environment has `papermill`, `tqdm`, and `geopandas`.
 
