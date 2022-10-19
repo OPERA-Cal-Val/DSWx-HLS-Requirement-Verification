@@ -55,4 +55,6 @@ python verify_all.py
 
     This will clear ouput and transient cell metadata (including when you executed your notebook) for easier version control. It will preserve cell tags (for papermill and the kernel information)
 
-4. Have another member review.
+4. For local `git diff`, use `nbdiff --ignore-id` as cell ids are required and updated on each change for newer versions of nbformat. Github will provide a prettier way of viewing notebook differences.
+5. Have another member review.
+
