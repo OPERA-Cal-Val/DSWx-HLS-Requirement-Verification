@@ -1,5 +1,6 @@
 from functools import lru_cache
 
+import urllib3
 from dotenv import dotenv_values
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Q, Search
@@ -7,6 +8,7 @@ from elasticsearch_dsl import Q, Search
 config = dotenv_values()
 ES_USERNAME = config['ES_USERNAME']
 ES_PASSWORD = config['ES_PASSWORD']
+urllib3.disable_warnings()
 
 
 @lru_cache
