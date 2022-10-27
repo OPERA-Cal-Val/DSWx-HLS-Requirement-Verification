@@ -54,5 +54,6 @@ def get_dswx_urls(hls_id: str) -> list:
     base_url = 'https://opera-pst-rs-pop1.s3.us-west-2.amazonaws.com/'
     doc = get_DSWX_doc(hls_id)
     paths = doc['metadata']['product_s3_paths']
-    urls = [f'{base_url}{path}' for path in paths]
+    paths_formatted = [path.replace('s3://opera-pst-rs-pop1/', '') for path in paths]
+    urls = [f'{base_url}{path}' for path in paths_formatted]
     return urls
