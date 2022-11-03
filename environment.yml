@@ -16,7 +16,6 @@ dependencies:
  - numpy
  - matplotlib
  - fiona
- - gdal>=3.0
  - geopandas
  - boto3
  - tqdm
@@ -33,6 +32,5 @@ dependencies:
  - flake8-builtins
  - flake8-import-order
  - pystac-client
- - pip:
-   - python-dotenv
-   - dem-stitcher>=2.3.0
+ - python-dotenv
+ - dem_stitcher>=2.3.0
