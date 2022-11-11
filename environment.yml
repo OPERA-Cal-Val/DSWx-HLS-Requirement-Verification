@@ -21,6 +21,7 @@ dependencies:
  - tqdm
  - pip
  - planet
+ - pytest
  - contextily
  - scikit-image
  - scikit-learn

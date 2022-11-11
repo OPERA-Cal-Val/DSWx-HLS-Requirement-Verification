@@ -1,10 +1,10 @@
-# Generating DSWx Datasets
+# Verification of DSWx-HLS Validation Datasets
 
-Instuctions TBD
+This repository compares provisional OPERA DSWx-HLS products with validation datasets. To access the provisional products required, you will need to have JPL VPN access and then be granted access to the HySDS clone used for validation.
 
 ## Setup
 
-A `.env` file should have the following information:
+With access setup, an `.env` file in this repository should have the following information:
 
 ```
 ES_USERNAME='<JPL USERNAME>'
@@ -38,12 +38,11 @@ After activatating your environment (i.e. `conda activate dswx_val`), then
 
 ## Checking All Validation Datasets with `verify_all.py`
 
-For some reason, using an environment that is the same as the kernel caused issues. This is an issue that should be resolved. For the time being, make sure a different environment has `papermill`, `tqdm`, and `geopandas`.
+Run the papermill script with:
 
 ```
 python verify_all.py
 ```
-
 
 ## Contributing
 
@@ -51,10 +50,13 @@ python verify_all.py
 2. Do you development.
 3. Make sure to run before you commit:
 
-   ```jupyter nbconvert --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --ClearMetadataPreprocessor.preserve_cell_metadata_mask='[("tags")]' --ClearMetadataPreprocessor.preserve_nb_metadata_mask='{"language_info", "name", "kernelspec"}' --inplace *.ipynb```
+   ```
+   jupyter nbconvert --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --ClearMetadataPreprocessor.preserve_cell_metadata_mask='[("tags")]' --ClearMetadataPreprocessor.preserve_nb_metadata_mask='{"language_info", "name", "kernelspec"}' --inplace *.ipynb
+   ```
 
     This will clear ouput and transient cell metadata (including when you executed your notebook) for easier version control. It will preserve cell tags (for papermill and the kernel information)
 
 4. For local `git diff`, use `nbdiff --ignore-id` as cell ids are required and updated on each change for newer versions of nbformat. Github will provide a prettier way of viewing notebook differences.
-5. Have another member review.
+5. Run `pytest .` in this repository to ensure working of the notebooks. We do not use github actions (yet).
+6. Have another member review.
 
