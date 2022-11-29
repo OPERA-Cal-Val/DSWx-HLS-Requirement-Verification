@@ -1,0 +1,41 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11"]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: extractions/netrc@v1
+        with:
+          machine: urs.earthdata.nasa.gov
+          username: ${{ secrets.EARTHDATA_USERNAME }}
+          password: ${{ secrets.EARTHDATA_PASSWORD }}
+
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          mamba-version: "*"
+          python-version: ${{ matrix.python-version }}
+          activate-environment: dswx_val
+          environment-file: environment.yml
+
+      - name: Install kernel
+        shell: bash -l {0}
+        run: |
+          python -m ipykernel install --user --name dswx_val
+
+      - name: Pytest in conda environment
+        shell: bash -l {0}
+        run: pytest . -m 'not integration'
