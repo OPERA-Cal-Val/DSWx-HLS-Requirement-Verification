@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 from verification.val_db import get_finalized_validation_datasets, get_HLS_id
 
-ipynb_dir = Path('out_notebooks_synthetic2')
+ipynb_dir = Path('out_notebooks')
 ipynb_dir.mkdir(exist_ok=True)
 
 
