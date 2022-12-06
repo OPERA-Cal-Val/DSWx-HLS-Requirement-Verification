@@ -31,7 +31,7 @@ def main():
     for planet_id, dswx_id in zip(tqdm(planet_ids, desc='Validation Datasets'), dswx_ids):
 
         print(f'Planet ID: {planet_id}')
-        out_notebook_path = ipynb_dir / (dswx_ids[0].split('_B01')[0].split('/')[-1] + '.ipynb')
+        out_notebook_path = ipynb_dir / (dswx_id.split('_B01')[0].split('/')[-1] + '.ipynb')
         pm.execute_notebook('0-Verify_Requirements.ipynb',
                             output_path=out_notebook_path,
                             parameters={'PLANET_ID': planet_id}
