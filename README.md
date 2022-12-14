@@ -1,15 +1,8 @@
 # Verification of DSWx-HLS Validation Datasets
 
-This repository compares provisional OPERA DSWx-HLS products with validation datasets. To access the provisional products required, you will need to have JPL VPN access and then be granted access to the HySDS clone used for validation.
+This repository compares provisional OPERA DSWx-HLS products with validation datasets.
 
 ## Setup
-
-With access setup, an `.env` file in this repository should have the following information:
-
-```
-ES_USERNAME='<JPL USERNAME>'
-ES_PASSWORD='<JPL PASSWORD>'
-```
 
 In your `~/.netrc`, place earthdata login credentials:
 
