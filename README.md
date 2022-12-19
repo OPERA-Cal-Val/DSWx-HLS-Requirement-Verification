@@ -52,6 +52,8 @@ ES_USERNAME='<JPL USERNAME>'
 ES_PASSWORD='<JPL PASSWORD>'
 ```
 
+After that is done, then run the notebook [_create_validation_table.ipynb](_create_validation_table.ipynb) to create this table.
+
 ## Contributing
 
 1. Create a branch from dev and create a pull request.
