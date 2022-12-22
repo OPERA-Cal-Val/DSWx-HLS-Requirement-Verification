@@ -61,5 +61,5 @@ __pycache__/
 exp_*.ipynb
 
 # Out Verification statistics
-verification_stats_agg*/
-verification_assessment_data*/
+out/assessment_data/*/
+out/out_notebooks/*/
