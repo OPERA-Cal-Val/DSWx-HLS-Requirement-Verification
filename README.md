@@ -37,6 +37,8 @@ Run the papermill script with:
 python verify_all.py
 ```
 
+See `sample_runs.zsh` for some additional ways of parametrizing the tests.
+
 ## Generating the static `validation_table_data.csv`
 
 This mirrors the current validation clone. To generate this table, one must additionally have:
@@ -61,6 +63,7 @@ After that is done, then run the notebook [_create_validation_table.ipynb](_crea
 3. For local `git diff`, use `nbdiff --ignore-id` as cell ids are required and updated on each change for newer versions of nbformat. Github will provide a prettier way of viewing notebook differences.
 4. Run `pytest .` in this repository to ensure working of the notebooks. We do not use github actions (yet).
 5. Have another member review.
+6. Make sure you don't commit to `out/` directory unless you want to share your results with the larger PST team. You can manually add / commit files with git.
 
 <!--
 3. Make sure to run before you commit:
