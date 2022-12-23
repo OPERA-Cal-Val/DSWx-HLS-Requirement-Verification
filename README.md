@@ -37,19 +37,39 @@ Run the papermill script with:
 python verify_all.py
 ```
 
+See `sample_runs.zsh` for some additional ways of parametrizing the tests.
+
+## Generating the static `validation_table_data.csv`
+
+This mirrors the current validation clone. To generate this table, one must additionally have:
+
+1. JPL VPN access and be connected to the VPN
+2. Have group access to the validation clone (that requires coordination with HySDS to be added to the appropriate LDAP group)
+3. Create a `.env` file with JPL credentials.
+
+Specifically, for 3. the `.env` should look like
+
+```
+ES_USERNAME='<JPL USERNAME>'
+ES_PASSWORD='<JPL PASSWORD>'
+```
+
+After that is done, then run the notebook [_create_validation_table.ipynb](_create_validation_table.ipynb) to create this table.
+
 ## Contributing
 
 1. Create a branch from dev and create a pull request.
 2. Do you development.
+3. For local `git diff`, use `nbdiff --ignore-id` as cell ids are required and updated on each change for newer versions of nbformat. Github will provide a prettier way of viewing notebook differences.
+4. Run `pytest .` in this repository to ensure working of the notebooks. We do not use github actions (yet).
+5. Have another member review.
+6. Make sure you don't commit to `out/` directory unless you want to share your results with the larger PST team. You can manually add / commit files with git.
+
+<!--
 3. Make sure to run before you commit:
 
    ```
    jupyter nbconvert --ClearOutputPreprocessor.enabled=True --ClearMetadataPreprocessor.enabled=True --ClearMetadataPreprocessor.preserve_cell_metadata_mask='[("tags")]' --ClearMetadataPreprocessor.preserve_nb_metadata_mask='{"language_info", "name", "kernelspec"}' --inplace *.ipynb
    ```
 
-    This will clear ouput and transient cell metadata (including when you executed your notebook) for easier version control. It will preserve cell tags (for papermill and the kernel information)
-
-4. For local `git diff`, use `nbdiff --ignore-id` as cell ids are required and updated on each change for newer versions of nbformat. Github will provide a prettier way of viewing notebook differences.
-5. Run `pytest .` in this repository to ensure working of the notebooks. We do not use github actions (yet).
-6. Have another member review.
-
+    This will clear ouput and transient cell metadata (including when you executed your notebook) for easier version control. It will preserve cell tags (for papermill and the kernel information) -->
