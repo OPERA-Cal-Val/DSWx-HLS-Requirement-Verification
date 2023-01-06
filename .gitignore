@@ -54,9 +54,12 @@ __pycache__/
 # Data files
 *.xml
 *.tif
+*.tiff
+*.vrt
 
 # Experimental ipynb
 exp_*.ipynb
 
 # Out Verification statistics
-verification_stats_agg/
+out/assessment_data/*/
+out/out_notebooks/*/
