@@ -17,8 +17,13 @@ ipynb_dir.mkdir(exist_ok=True)
               default='dswx',
               type=click.Choice(['dswx', 'val']),
               help='How pixels from each class are chosen - using labels from dswx or val classification')
+@click.option('--downsample_to_3_ha',
+              default=False,
+              type=bool,
+              help='Downsample both datasets to 3 ha - see notebooks for details'
+              )
 @click.command()
-def main(confidence_minimum, class_selection_from):
+def main(confidence_minimum, class_selection_from, downsample_to_3_ha):
 
     df_validation_table = pd.read_csv('validation_table_data.csv')
     planet_ids = df_validation_table.planet_id.to_list()
@@ -45,6 +50,7 @@ def main(confidence_minimum, class_selection_from):
                             parameters=dict(PLANET_ID=planet_id,
                                             SAMPLE_FROM_DSWX=sample_from_dswx,
                                             CONFIDENCE_MINIMUM=confidence_minimum,
+                                            DOWNSAMPLE_BOTH_DS_TO_3_HA=downsample_to_3_ha
                                             )
                             )
 
