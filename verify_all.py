@@ -39,8 +39,10 @@ def main(confidence_minimum, class_selection_from, downsample_to_3_ha):
     for planet_id, dswx_id in zip(tqdm(planet_ids, desc='Validation Datasets'), dswx_ids):
 
         print(f'Planet ID: {planet_id}')
+        downsample_3ha_token = '_3-ha-downsample' if downsample_to_3_ha else ''
         parameters_dir_name = (f'sample-from-{class_selection_from}_'
-                               f'conf-geq_{confidence_minimum}')
+                               f'conf-geq_{confidence_minimum}'
+                               f'{downsample_3ha_token}')
         parameters_dir = ipynb_dir / parameters_dir_name
         parameters_dir.mkdir(exist_ok=True, parents=True)
         out_notebook_path = parameters_dir / (dswx_id.split('_B01')[0].split('/')[-1] + '.ipynb')
