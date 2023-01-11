@@ -63,3 +63,5 @@ exp_*.ipynb
 # Out Verification statistics
 out/assessment_data/*/
 out/out_notebooks/*/
+
+presentation_images/
