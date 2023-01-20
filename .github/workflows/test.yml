@@ -24,12 +24,12 @@ jobs:
           username: ${{ secrets.EARTHDATA_USERNAME }}
           password: ${{ secrets.EARTHDATA_PASSWORD }}
 
-      - uses: conda-incubator/setup-miniconda@v2
+      - uses: mamba-org/provision-with-micromamba@main
         with:
-          mamba-version: "*"
-          python-version: ${{ matrix.python-version }}
-          activate-environment: dswx_val
+          environment-name: dswx_val
           environment-file: environment.yml
+          extra-specs: |
+            python=${{ matrix.python-version }}
 
       - name: Install kernel
         shell: bash -l {0}
