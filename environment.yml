@@ -17,6 +17,7 @@ dependencies:
  - matplotlib
  - fiona
  - geopandas
+ - gdal
  - boto3
  - tqdm
  - pip
