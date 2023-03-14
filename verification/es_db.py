@@ -55,5 +55,7 @@ def get_dswx_urls(hls_id: str) -> list:
     doc = get_DSWX_doc(hls_id)
     paths = doc['metadata']['product_s3_paths']
     paths_formatted = [path.replace('s3://opera-pst-rs-pop1/', '') for path in paths]
+    if True:
+        paths_formatted = [path.replace('products/OPERA', 'products/DSWx_HLS/OPERA') for path in paths_formatted]
     urls = [f'{base_url}{path}' for path in paths_formatted]
     return urls
