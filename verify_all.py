@@ -10,9 +10,9 @@ ipynb_dir.mkdir(exist_ok=True)
 
 
 @click.option('--confidence_minimum',
-              default=70,
+              default=0,
               type=int,
-              help='Only use confidence above int value representing percent; other values masked')
+              help='Only use confidence above int value representing percent; other values masked; this does not work anymore because confidence changed')
 @click.option('--class_selection_from',
               default='dswx',
               type=click.Choice(['dswx', 'val']),
@@ -24,6 +24,9 @@ ipynb_dir.mkdir(exist_ok=True)
               )
 @click.command()
 def main(confidence_minimum, class_selection_from, downsample_to_3_ha):
+
+    if confidence_minimum:
+        raise ValueError('This is deprecated and the notebook will fail')
 
     df_validation_table = pd.read_csv('validation_table_data.csv')
     planet_ids = df_validation_table.planet_id.to_list()
