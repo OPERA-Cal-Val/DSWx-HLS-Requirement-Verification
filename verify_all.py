@@ -9,12 +9,12 @@ ipynb_dir = Path('out_notebooks')
 ipynb_dir.mkdir(exist_ok=True)
 
 
-@click.option('--confidence_minimum',
-              default=0,
-              type=int,
-              help='Only use confidence above int value representing percent; other values masked; this does not work anymore because confidence changed')
+@click.option('--confidence_classes',
+              default=None,
+              type=list,
+              help='See product spec - use only desired classes to be ')
 @click.option('--class_selection_from',
-              default='dswx',
+              default='val',
               type=click.Choice(['dswx', 'val']),
               help='How pixels from each class are chosen - using labels from dswx or val classification')
 @click.option('--downsample_to_3_ha',
@@ -23,10 +23,11 @@ ipynb_dir.mkdir(exist_ok=True)
               help='Downsample both datasets to 3 ha - see notebooks for details'
               )
 @click.command()
-def main(confidence_minimum, class_selection_from, downsample_to_3_ha):
+def main(confidence_classes, class_selection_from, downsample_to_3_ha):
 
-    if confidence_minimum:
-        raise ValueError('This is deprecated and the notebook will fail')
+    conf_temp = "-".join(str(confidence_classes)) if confidence_classes else 'none'
+    conf_token = f'conf-classes-{conf_temp}'.lower()
+    confidence_classes = confidence_classes or []
 
     df_validation_table = pd.read_csv('validation_table_data.csv')
     planet_ids = df_validation_table.planet_id.to_list()
@@ -44,7 +45,7 @@ def main(confidence_minimum, class_selection_from, downsample_to_3_ha):
         print(f'Planet ID: {planet_id}')
         downsample_3ha_token = '_3-ha-downsample' if downsample_to_3_ha else ''
         parameters_dir_name = (f'sample-from-{class_selection_from}_'
-                               f'conf-geq_{confidence_minimum}'
+                               f'{conf_token}'
                                f'{downsample_3ha_token}')
         parameters_dir = ipynb_dir / parameters_dir_name
         parameters_dir.mkdir(exist_ok=True, parents=True)
@@ -54,7 +55,7 @@ def main(confidence_minimum, class_selection_from, downsample_to_3_ha):
                             output_path=out_notebook_path,
                             parameters=dict(PLANET_ID=planet_id,
                                             SAMPLE_FROM_DSWX=sample_from_dswx,
-                                            CONFIDENCE_MINIMUM=confidence_minimum,
+                                            CONFIDENCE_CLASSES=confidence_classes,
                                             DOWNSAMPLE_BOTH_DS_TO_3_HA=downsample_to_3_ha
                                             )
                             )
