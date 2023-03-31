@@ -30,7 +30,7 @@ def get_image_table() -> gpd.GeoDataFrame:
 def get_val_s3_path(planet_id: str, exclusion_patterns: list = None) -> str:
     df = get_finalized_validation_datasets()
     df_temp = df[df.image_name == planet_id]
-    assert(df_temp.shape[0] == 1)
+    assert (df_temp.shape[0] == 1)
 
     record = df_temp.to_dict('records')[0]
     bucket = record['bucket']
@@ -60,5 +60,5 @@ def read_validation_dataset(planet_id: str, exclusion_patterns: list = None) -> 
 def get_HLS_id(planet_id: str) -> str:
     df = get_image_table()
     df_temp = df[df.image_name == planet_id]
-    assert(df_temp.shape[0] == 1)
+    assert (df_temp.shape[0] == 1)
     return df_temp.collocated_dswx.iloc[0]
